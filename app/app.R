@@ -3,12 +3,14 @@
 # File Name MUST be: app.R
 # ==========================================
 
-# 必須明確列出所有套件，ShinyLive 會自動掃描這些宣告來下載 WebAssembly 版本
+# 明確列出輕量化套件，並強制宣告底層相依套件以修復 WebR Bug
 library(shiny)
-library(tidyverse)
+library(dplyr)    # 取代 tidyverse (處理資料流 %>%)
+library(tibble)   # 取代 tidyverse (處理資料表)
 library(bslib)
 library(plotly)
-library(scales) # 處理金額千分位與比例
+library(scales)
+library(munsell)  # 強制讓 ShinyLive 下載這個缺失的底層套件
 
 # --- 1. 雙語字典與解讀模版 ---
 dict <- list(
