@@ -3,14 +3,17 @@
 # File Name MUST be: app.R
 # ==========================================
 
-# 明確列出輕量化套件，並強制宣告底層相依套件以修復 WebR Bug
+# 🚫 絕對不可使用 library(tidyverse)
+# ✅ 請使用以下精確解耦的輕量套件清單
 library(shiny)
-library(dplyr)    # 取代 tidyverse (處理資料流 %>%)
-library(tibble)   # 取代 tidyverse (處理資料表)
 library(bslib)
+library(dplyr)    # 負責資料處理 (取代 tidyverse)
+library(tibble)   # 負責資料表格式 (取代 tidyverse)
 library(plotly)
 library(scales)
-library(munsell)  # 強制讓 ShinyLive 下載這個缺失的底層套件
+library(munsell)  # 強制預先載入底層色彩套件，避免報錯
+library(DT)       # 保留供您未來擴充資料表使用
+library(bsicons)  # 保留供您未來擴充圖示使用
 
 # --- 1. 雙語字典與解讀模版 ---
 dict <- list(
